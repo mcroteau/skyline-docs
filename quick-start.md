@@ -110,7 +110,7 @@ namespace RestEasy{
         [Text]
         [Get(route="/")]
         public String index(){
-            return "hi";
+            return "Hi!";
         }
     }
 }
@@ -139,11 +139,9 @@ Let's run the application, open a terminal, cd into the project and run:
 
 &#x20;Then browse to:
 
-`http://localhost:4000/`
+`http://localhost:2000/`
 
-You should see a simple page that renders "hi".
-
-<figure><img src=".gitbook/assets/hi.png" alt=""><figcaption></figcaption></figure>
+You should see a simple page that renders "Hi!"
 
 &#x20;
 
