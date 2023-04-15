@@ -72,8 +72,7 @@ using Skyline;
 public class Launcher{
     public static int Main(String[] args){
          SkylineServer server = new SkylineServer();
-        server.setPorts(new Int32[]{2000, 3000, 4000});
-        server.setNumberOfRequestNegotiators(1000);//# concurrent requests the system can handle per prefix/port
+         server.setPorts(new Int32[]{2000, 3000, 4000});
          server.start();
          return 0;
     }
@@ -81,7 +80,7 @@ public class Launcher{
 ```
 ````
 
-I'm hoping this looks simple, with comparisons to SpringBoot, Node.js, Python SimpleHttpServer.
+I'm hoping this looks simple, with comparisons to SpringBoot, Node.js, Python SimpleHttpServer, but hopefully much much much more powerful.
 
 First you instantiate the SkylineServer passing in the port number in which you wish to bind Skyline to. This main class is the entry and will run Skyline for us.
 
