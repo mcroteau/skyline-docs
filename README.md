@@ -26,4 +26,8 @@ This site is dedicated to helping you build .Net Systems using Skyline. Skyline 
 
 That's it!
 
+<figure><img src=".gitbook/assets/skyline-server.png" alt=""><figcaption></figcaption></figure>
+
+
+
 Let's get started. [Quick Start!](quick-start.md)
