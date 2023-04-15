@@ -9,13 +9,11 @@
 ```csharp
 using Skyline;
 
-namespace RestEasy {
-    public class Launcher{
-        public static int Main(String[] args){
-            SkylineServer server = new SkylineServer(4000);
-            server.start();
-            return 0;
-        }
+public class Launcher{            
+    public static int Main(String[] args){
+        SkylineServer server = new SkylineServer(4000);
+        server.start();
+        return 0;
     }
 }
 ```
