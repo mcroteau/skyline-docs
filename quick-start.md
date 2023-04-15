@@ -24,7 +24,11 @@ and see something like the following:
 
 Now we will create our project structure, meaning all of the directories and build file.
 
-<figure><img src=".gitbook/assets/structure.png" alt=""><figcaption></figcaption></figure>
+
+
+<figure><img src=".gitbook/assets/Screenshot from 2023-04-15 08-49-58.png" alt=""><figcaption></figcaption></figure>
+
+
 
 We will complete to the two class files but before we do, let's create our RestEasy.csproj build file and add Skyline to our project.
 
@@ -47,7 +51,7 @@ The most important parts to this: the RestEasy.Launcher \<StartupObject> and the
 
   <ItemGroup>
     <Reference Include="Skyline">
-      <HintPath>libs\Skyline.dll</HintPath>
+      <HintPath>Libs\Skyline.dll</HintPath>
     </Reference>
   </ItemGroup>
 
@@ -55,11 +59,9 @@ The most important parts to this: the RestEasy.Launcher \<StartupObject> and the
 ```
 ````
 
-What's important is the Skyline.dll definition in the libs/ directory. Now would be a good time to add it to your project, just copy and paste the Skyline.dll file into the libs/ directory:
+What's important is the Skyline.dll definition in the Libs/ directory. Now would be a good time to add it to your project, just copy and paste the Skyline.dll file into the Libs/ directory
 
-<figure><img src=".gitbook/assets/skyline.png" alt=""><figcaption></figcaption></figure>
-
-The next parts will go quick and we will have our project ready to run. If you haven't done it already, go ahead and create both the `IndexController.cs` and the `Launcher.cs` class files in the `src/RestEasy/` directory.
+The next parts will go quick and we will have our project ready to run. If you haven't done it already, go ahead and create both the `IndexController.cs` and the `Launcher.cs` class files in the `RestEasy/` directory.
 
 ## Launcher.cs
 
@@ -67,19 +69,19 @@ The next parts will go quick and we will have our project ready to run. If you h
 ```csharp
 using Skyline;
 
-namespace RestEasy {
-    public class Launcher{
-        public static int Main(String[] args){
-            SkylineServer server = new SkylineServer(4000);
-            server.start();
-            return 0;
-        }
+public class Launcher{
+    public static int Main(String[] args){
+         SkylineServer server = new SkylineServer();
+        server.setPorts(new Int32[]{2000, 3000, 4000});
+        server.setNumberOfRequestNegotiators(1000);//# concurrent requests the system can handle per prefix/port
+         server.start();
+         return 0;
     }
 }
 ```
 ````
 
-I'm hoping this looks simple, with comparisons to Node.js, Python SimpleHttpServer and PLSA.R \*another project that I manage Java based Free and Open Source. If this doesn't, back to the drawing board for me! Ha!&#x20;
+I'm hoping this looks simple, with comparisons to SpringBoot, Node.js, Python SimpleHttpServer.
 
 First you instantiate the SkylineServer passing in the port number in which you wish to bind Skyline to. This main class is the entry and will run Skyline for us.
 
