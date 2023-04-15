@@ -10,14 +10,14 @@ Let's go ahead and create our Models. Here is a list of the Models we will need 
 ## User.cs
 
 ```
-Location: src/Persistence/Model/User.cs
+Location: Envato/Model/User.cs
 ```
 
 ````csharp
 ```csharp
 using System;
 
-namespace Persistence.Model {
+namespace Model {
 
     public class User{
         public int id;
@@ -61,14 +61,14 @@ Our User Model class will represent the person or people that will be created on
 ## Role.cs
 
 ```
-Location: src/Persistence/Model/Role.cs
+Location: Envato/Model/Role.cs
 ```
 
 ````csharp
 ```csharp
 using System;
 
-namespace Persistence.Model{
+namespace Model{
 
     public class Role{
         int id;
@@ -99,14 +99,14 @@ The Role class is very simple.&#x20;
 ## UserRole.cs
 
 ```
-Location: src/Persistence/Model/UserRole.cs
+Location: Envato/Model/UserRole.cs
 ```
 
 ````csharp
 ```csharp
 using System;
 
-namespace Persistence.Model{
+namespace Model{
 
     public class UserRole{
         int id;
@@ -136,6 +136,7 @@ namespace Persistence.Model{
         public void setRoleId(int roleId) {
             this.roleId = roleId;
         }
+
     }
 }
 ```
@@ -146,14 +147,14 @@ The UserRole links the User to one or many Roles.&#x20;
 ## Permission.cs
 
 ```
-Location: src/Persistence/Model/Permission.cs
+Location: Envato/Model/Permission.cs
 ```
 
 ````csharp
 ```csharp
 using System;
 
-namespace Persistence.Model{
+namespace Model{
 
     public class Permission{
         int id;
@@ -190,5 +191,9 @@ namespace Persistence.Model{
 ````
 
 Our final Models directory should look like this:
+
+<figure><img src="../.gitbook/assets/models-envato.png" alt=""><figcaption></figcaption></figure>
+
+
 
 Next we will create our Controller classes to handle all of our incoming traffic.

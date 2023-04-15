@@ -20,13 +20,15 @@ and see something like the following:
 
 Now we will create our project structure, meaning all of the directories and build file. Go ahead and create all of the following directories.
 
-<figure><img src="../.gitbook/assets/project-structure (1).png" alt=""><figcaption></figcaption></figure>
+You are going to need a Model, Repo, and Controller folders.
 
-Just pay attention to the **src/** folder. You are going to need a Model, Repo, and Controller folder. &#x20;
+<figure><img src="../.gitbook/assets/project-structure-envato.png" alt=""><figcaption></figcaption></figure>
 
-We will create all of the necessary class files before we do, let's create our **Persistence.csproj** build file and add Skyline to our project.
+&#x20;&#x20;
 
-## Persistence.csproj
+We will create all of the necessary class files before we do, let's create our **Envato.csproj** build file and add Skyline to our project.
+
+## Envato.csproj
 
 The most important parts to this: the Persistent.Launcher \<StartupObject> reference to the Skyline.dll which you downloaded and the **SQLlite** definition.
 
@@ -40,13 +42,14 @@ The most important parts to this: the Persistent.Launcher \<StartupObject> refer
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
     <WarningLevel>0</WarningLevel>
-    <StartupObject>Persistence.Launcher</StartupObject>
+    <StartupObject>Launcher</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
     <Reference Include="Skyline">
-      <HintPath>libs\Skyline.dll</HintPath>
+      <HintPath>Libs\Skyline.dll</HintPath>
     </Reference>
+    <!-- <ProjectReference Include="..\Skyline\Skyline.csproj" /> -->
     <PackageReference Include="System.Data.SQLite.Core" Version="1.0.117" />
   </ItemGroup>
 
@@ -54,7 +57,7 @@ The most important parts to this: the Persistent.Launcher \<StartupObject> refer
 ```
 ````
 
-What's important is the **Skyline.dll** definition in the **libs/** directory. Now would be a good time to add it to your project, just copy and paste the **Skyline.dll** file into the **libs/** directory:
+What's important is the **Skyline.dll** definition in the Libs/ directory. Now would be a good time to add it to your project, just copy and paste the **Skyline.dll** file into the Libs/ directory:
 
 
 

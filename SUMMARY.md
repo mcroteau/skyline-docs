@@ -11,4 +11,3 @@
   * [Step 6: Pages, Layouts, Styles](tutorial-authentication-and-authorization/step-6-pages-layouts-styles.md)
   * [Step 7: Launcher](tutorial-authentication-and-authorization/step-7-launcher.md)
   * [Step 8: Run it!](tutorial-authentication-and-authorization/step-8-run-it.md)
-* [Tutorial Download](tutorial-download.md)
