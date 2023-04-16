@@ -14,5 +14,5 @@ $ dotnet run
 
 You should see the following:
 
-<figure><img src="../.gitbook/assets/screenshot.png" alt=""><figcaption></figcaption></figure>
+<figure><img src="../.gitbook/assets/skyline-server.png" alt=""><figcaption></figcaption></figure>
 
