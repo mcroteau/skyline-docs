@@ -12,3 +12,4 @@
   * [Step 7: Launcher](tutorial/step-7-launcher.md)
   * [Step 8: Run it!](tutorial/step-8-run-it.md)
 * [Tutorial Download](tutorial-download.md)
+* [Contact](contact.md)
