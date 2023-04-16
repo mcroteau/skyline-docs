@@ -1,4 +1,4 @@
-# Step 4 : Repos
+# Step 4: Repos
 
 We like our systems to be as clean organized as possible which is why we subscribe to placing all database logic in Repository classes we are going to call Repos. Each Repo requires two constructors, one no argument constructor and another accepting a DataTransferObject dto which we will further develop in the future.&#x20;
 

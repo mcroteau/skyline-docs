@@ -16,13 +16,13 @@ We assume you have .Net installed and can run the following command:&#x20;
 
 and see something like the following:
 
-<figure><img src="../.gitbook/assets/dotnet.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/dotnet.png" alt=""><figcaption></figcaption></figure>
 
 Now we will create our project structure, meaning all of the directories and build file. Go ahead and create all of the following directories.
 
 You are going to need a Model, Repo, and Controller folders.
 
-<figure><img src="../.gitbook/assets/project-structure-envato.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/project-structure-envato.png" alt=""><figcaption></figcaption></figure>
 
 &#x20;&#x20;
 

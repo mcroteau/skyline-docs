@@ -8,7 +8,7 @@ description: >-
 
 If you haven't done so yet, create folders for your views/pages and your layout. This is what they should look like:
 
-<figure><img src="../.gitbook/assets/Screenshot from 2023-04-15 22-46-10.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/Screenshot from 2023-04-15 22-46-10.png" alt=""><figcaption></figcaption></figure>
 
 Let's create all of our pages. First lets create our layout file, we will call it Default.asp. We are going use .asp for the file extension, however you can use what ever extension you wish.
 

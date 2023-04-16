@@ -192,7 +192,7 @@ namespace Model{
 
 Our final Models directory should look like this:
 
-<figure><img src="../.gitbook/assets/models-envato.png" alt=""><figcaption></figcaption></figure>
+<figure><img src=".gitbook/assets/models-envato.png" alt=""><figcaption></figcaption></figure>
 
 
 

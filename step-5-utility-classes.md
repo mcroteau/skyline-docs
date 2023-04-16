@@ -88,7 +88,7 @@ public class DatabaseSetup{
 
 ## `AuthAccess`.cs
 
-`Location: Envato/DatabaseSetup.cs`
+`Location: Envato/AuthAccess.cs`
 
 The AuthAccess class acts like an intermediary to Skylines SecurityManager. The SecurityManager relies on this class to determine whether or not someone is authenticated, has certain roles or permissions.
 
