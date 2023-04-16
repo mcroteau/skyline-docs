@@ -1,10 +1,10 @@
 # Step 7: Launcher
 
-Finally we need our Launcher or Main class to execute the main method with SkylineServer prepared, ready to run. The 70 is the number of threads or request negotiators on call.
+Finally we need our Launcher or Main class to execute the main method with SkylineServer prepared, ready to run.&#x20;
 
 ## `Launcher`.cs
 
-`Location: src/Persistence/Launcher.cs`
+`Location: Envato/Launcher.cs`
 
 ````csharp
 ```csharp
@@ -22,27 +22,25 @@ using Skyline.Model;
 using Skyline.Schemes;
 using Skyline.Security;
 
-using Persistence.Model;
-using Persistence.Repo;
+using Model;
+using Repo;
 
-namespace Persistence{
+class Launcher{
 
-    class Launcher{
-
-        public static int Main(String[] args){
-            DatabaseSetup databaseSetup = new DatabaseSetup();
-            databaseSetup.clean().setup();
+    public static int Main(String[] args){
         
-            SkylineServer server = new SkylineServer(4000, 70);
-            server.setPersistentMode(true);
-            server.setSecurityAccessType(new AuthAccess().GetType());
-            server.start();
+        DatabaseSetup databaseSetup = new DatabaseSetup();
+        databaseSetup.clean().setup();
+    
+        SkylineServer server = new SkylineServer();
+        server.setPorts(new Int32[]{2000, 3000, 4000});
+        server.setNumberOfRequestNegotiators(1000);
+        server.setPersistentMode(true);
+        server.setSecurityAccessType(new AuthAccess().GetType());
+        server.start();
 
-            return 0;
-        }
+        return 0;
     }
 }
-
-
 ```
 ````
