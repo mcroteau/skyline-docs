@@ -8,7 +8,7 @@ Let's start with the IndexController.cs
 
 ## IndexController.cs
 
-`Location: src/`Persistence`/Controller/IndexController.cs`
+`Location: Envato/Controller/IndexController.cs`
 
 ````csharp
 ```csharp
@@ -18,7 +18,7 @@ using Skyline.Model;
 using Skyline.Security;
 using Skyline.Annotation;
 
-namespace Persistence.Controller{
+namespace Controller{
 
     [NetworkController]
     public class IndexController{
@@ -31,33 +31,25 @@ namespace Persistence.Controller{
             this.applicationAttributes = applicationAttributes;
         }
     
-        [Layout(file="pages/Default.asp")]        
+        [Layout(file="Pages/Default.ux")]        
         [Get(route="/")]
         public String index(NetworkRequest req, ViewCache cache){
 
             String sessionuser = req.getUserCredential();
             cache.set("sessionuser", sessionuser);
 
-            return "pages/Index.asp";
+            return "Pages/Index.ux";
         }
 
-        [Layout(file="pages/Default.asp")]        
-        [Get(route="/secured")]
-        public String secured(NetworkRequest req, ViewCache cache){
-
-            String sessionuser = req.getUserCredential();
-            cache.set("sessionuser", sessionuser);
-
-            return "pages/Secured.asp";
-        }
     }
+
 }
 ```
 ````
 
 ## `IdentityController.cs`
 
-`Location: src/`Persistence`/Controller/IdentityController.cs`
+`Location: Envato/Controller/IdentityController.cs`
 
 ````csharp
 ```csharp
@@ -67,10 +59,23 @@ using Skyline.Model;
 using Skyline.Security;
 using Skyline.Annotation;
 
-namespace Persistence.Controller{
+using Model;
+using Repo;
+
+namespace Controller{
 
     [NetworkController]
     public class IdentityController{
+
+        [Bind]
+        public UserRepo userRepo;
+
+        [Bind]
+        public RoleRepo roleRepo;
+
+        [Bind]
+        public PermissionRepo permissionRepo;
+
 
         public IdentityController(){}
 
@@ -80,13 +85,20 @@ namespace Persistence.Controller{
             this.applicationAttributes = applicationAttributes;
         }
 
-        [Layout(file="pages/Default.asp")]        
+        [Layout(file="Pages/Default.ux")]        
         [Get(route="/signin")]
         public String signin(NetworkRequest req, ViewCache cache){           
             String sessionuser = req.getUserCredential();
             cache.set("sessionuser", sessionuser);
+            return "Pages/Signin.ux";
+        }
 
-            return "pages/Signin.asp";
+        [Layout(file="Pages/Default.ux")]        
+        [Get(route="/signup")]
+        public String signup(NetworkRequest req, ViewCache cache){           
+            String sessionuser = req.getUserCredential();
+            cache.set("sessionuser", sessionuser);
+            return "Pages/Signup.ux";
         }
 
         [Post(route="/signin")]
@@ -100,15 +112,39 @@ namespace Persistence.Controller{
             manager.signout(req, resp);
 
             if(manager.signin(email, password, req, resp)){
-                return "redirect:/secured";
+                return "redirect:/";
             }
-            cache.set("message", "fail.");
+            cache.set("message", "please try again.");
             return "redirect:/signin";
         }
 
         [Get(route="/signout")]
         public String signout(NetworkRequest req, NetworkResponse resp, SecurityManager manager){
             manager.signout(req, resp);
+            return "redirect:/signin";
+        }
+
+        [Post(route="/register")]
+        public String register(NetworkRequest req, NetworkResponse resp, SecurityManager manager, ViewCache cache){            
+            String email = req.getValue("email");
+            String password = req.getValue("password");
+            
+            User user = new User();
+            user.setEmail(email);
+            user.setPassword(password);
+            long id = userRepo.save(user);
+
+            UserRole userRole = new UserRole();
+            userRole.setUserId(Convert.ToInt32(id));
+            userRole.setRoleId(1);
+            roleRepo.save(userRole);
+
+            Permission permission = new Permission();
+            permission.setUserId(Convert.ToInt32(id));
+            permission.setPermission("users:maintenance:" + id);
+            permissionRepo.save(permission);
+
+            cache.set("message", "successfully registered.");
             return "redirect:/signin";
         }
     }
@@ -118,7 +154,7 @@ namespace Persistence.Controller{
 
 ## `UserController.cs`
 
-`Location: src/`Persistence`/Controller/UserController.cs`
+`Location: Envato/Controller/UserController.cs`
 
 ````csharp
 ```csharp
@@ -130,10 +166,10 @@ using Skyline.Model;
 using Skyline.Security;
 using Skyline.Annotation;
 
-using Persistence.Model;
-using Persistence.Repo;
+using Model;
+using Repo;
 
-namespace Persistence.Controller{
+namespace Controller{
 
     [NetworkController]
     public class UserController{
@@ -155,7 +191,7 @@ namespace Persistence.Controller{
             this.applicationAttributes = applicationAttributes;
         }
 
-        [Layout(file="pages/Default.asp")]        
+        [Layout(file="Pages/Default.ux")]        
         [Get(route="/users")]
         public String index(NetworkRequest req, ViewCache cache){
 
@@ -165,10 +201,10 @@ namespace Persistence.Controller{
             ArrayList users = userRepo.getList();
             cache.set("users", users);
 
-            return "pages/Users/Index.asp";
+            return "Pages/Users/Index.ux";
         }
 
-        [Layout(file="pages/Default.asp")]        
+        [Layout(file="Pages/Default.ux")]        
         [Get(route="/users/create")]
         public String create(NetworkRequest req, SecurityManager manager, ViewCache cache){
             
@@ -180,7 +216,7 @@ namespace Persistence.Controller{
             String sessionuser = req.getUserCredential();
             cache.set("sessionuser", sessionuser);
 
-            return "pages/Users/Create.asp";
+            return "Pages/Users/Create.ux";
         }
 
         [Post(route="/users/save")]
@@ -214,10 +250,10 @@ namespace Persistence.Controller{
             permissionRepo.save(permission);
 
             cache.set("message", "success.");
-            return "redirect:/users/edit/" + id;
+            return "redirect:/users";
         }
         
-        [Layout(file="pages/Default.asp")]
+        [Layout(file="Pages/Default.ux")]
         [Get(route="/users/edit/{id}")]
         public String edit([Variable] Int32 id,
                             NetworkRequest req, 
@@ -243,7 +279,7 @@ namespace Persistence.Controller{
             User user = userRepo.getId(id);
             cache.set("user", user);
 
-            return "pages/Users/Edit.asp";
+            return "Pages/Users/Edit.ux";
         }
 
         [Post(route="/users/update/{id}")]

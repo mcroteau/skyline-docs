@@ -4,8 +4,9 @@ We like our systems to be as clean organized as possible which is why we subscri
 
 ## RoleRepo.cs
 
-`Location: src/Persistence/Repo/RoleRepo.cs`
+`Location: Envato/Repo/RoleRepo.cs`
 
+````csharp
 ```csharp
 
 using System;
@@ -18,9 +19,9 @@ using Skyline.Annotation;
 
 using System.Data.SQLite;
 
-using Persistence.Model;
+using Model;
 
-namespace Persistence.Repo{
+namespace Repo{
 
     [Repository]
     public class RoleRepo{
@@ -55,10 +56,11 @@ namespace Persistence.Repo{
     }
 }
 ```
+````
 
 ## `PermissionRepo.cs`
 
-`Location: src/Persistence/Repo/PermissionRepo.cs`
+`Location: Envato/Repo/PermissionRepo.cs`
 
 ````csharp
 ```csharp
@@ -73,9 +75,9 @@ using Skyline.Annotation;
 
 using System.Data.SQLite;
 
-using Persistence.Model;
+using Model;
 
-namespace Persistence.Repo{
+namespace Repo{
 
     [Repository]
     public class PermissionRepo{
@@ -114,8 +116,9 @@ namespace Persistence.Repo{
 
 ## `UserRepo.cs`
 
-`Location: src/Persistence/Repo/UserRepo.cs`
+`Location: Envato/Repo/UserRepo.cs`
 
+````csharp
 ```csharp
 
 using System;
@@ -128,9 +131,9 @@ using Skyline.Annotation;
 
 using System.Data.SQLite;
 
-using Persistence.Model;
+using Model;
 
-namespace Persistence.Repo{
+namespace Repo{
 
     [Repository]
     public class UserRepo{
@@ -332,10 +335,7 @@ namespace Persistence.Repo{
             return permissions;
         }
     }
+
 }
 ```
-
-
-
-
-
+````
