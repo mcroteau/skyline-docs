@@ -11,5 +11,5 @@
 * [Step 6: Pages, Layouts, Styles](step-6-pages-layouts-styles.md)
 * [Step 7: Launcher](step-7-launcher.md)
 * [Step 8: Run it!](step-8-run-it.md)
-* [Tutorial Download](tutorial-download.md)
+* [Downloads](downloads.md)
 * [Contact](contact.md)
