@@ -4,7 +4,7 @@ description: A Simple REST Endpoint
 
 # Quick Start
 
-In this tutorial we will create a simple project that will serve up plain text "hi". Ha!
+In this tutorial we will create a simple project that will serve up plain text "hi".
 
 What do you need to get started?&#x20;
 
